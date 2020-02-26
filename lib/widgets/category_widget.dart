@@ -26,7 +26,7 @@ class CategoryWidget extends StatelessWidget {
                 color: cat.luminance > 0.5 ? Colors.black : Colors.white,
                 fontWeight: FontWeight.bold,
               ),
-               textAlign: TextAlign.center,
+          textAlign: TextAlign.center,
         ),
       ),
     );
@@ -61,7 +61,7 @@ class CategoryWidget extends StatelessWidget {
               ),
             ],
           );
-        } else  {
+        } else {
           return AlertDialog(
             title: Text(
               'Delete ${cat.name}?',
@@ -127,17 +127,60 @@ class CategoryWidget extends StatelessWidget {
     );
   }
 
+  /// Show bottom sheet for edit and delete functions
+  void _showActions(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        builder: (ctx) {
+          return Container(
+            child: Container(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.edit),
+                    title: Text('Edit'),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed(NewCategory.routeName,
+                          arguments: {'category': this.cat});
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.delete),
+                    title: Text('Delete'),
+                    onTap: () async {
+                      Navigator.of(context).pop();
+                      await _deleteCategory(context);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
-
-     const IconData cuperPencil = const IconData(0xf37e,
-          fontFamily: CupertinoIcons.iconFont,
-          fontPackage: CupertinoIcons.iconFontPackage,
-          );
+    const IconData cuperPencil = const IconData(
+      0xf37e,
+      fontFamily: CupertinoIcons.iconFont,
+      fontPackage: CupertinoIcons.iconFontPackage,
+    );
     var menuActions = <Widget>[
       // Edit
       CupertinoContextMenuAction(
-        child: Text('Edit', style: TextStyle(color: Colors.black),),
+        child: Text(
+          'Edit',
+          style: TextStyle(color: Colors.black),
+        ),
         trailingIcon: cuperPencil,
         onPressed: () {
           Navigator.of(context).pop();
@@ -160,15 +203,22 @@ class CategoryWidget extends StatelessWidget {
       ),
     ];
 
-    
-
     // ? Default categories cannot be edited or deleted
-    if (DEFAULT_CATEGORIES.contains(cat.name)) return _buildTile(context);
-
-    return CupertinoContextMenu(
-      previewBuilder: _previewBuilder,
-      actions: menuActions,
-      child: _buildTile(context),
-    );
+    if (DEFAULT_CATEGORIES.contains(cat.name))
+      return _buildTile(context);
+    else if (Platform.isIOS) {
+      return CupertinoContextMenu(
+        previewBuilder: _previewBuilder,
+        actions: menuActions,
+        child: _buildTile(context),
+      );
+    } else {
+      return GestureDetector(
+        child: _buildTile(context),
+        onTap: () {
+          _showActions(context);
+        },
+      );
+    }
   }
 }

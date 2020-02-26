@@ -6,6 +6,9 @@ import 'package:hive/hive.dart';
 
 import '../utils/theme.dart';
 
+/// Theme Picker page
+/// 
+/// A page that consists of the available theme options (Light & dark)
 class ThemePicker extends StatefulWidget {
   static const routeName = '/themePicker';
 
@@ -65,7 +68,7 @@ class _ThemePickerState extends State<ThemePicker> {
     DexterTheme d = Provider.of<DexterTheme>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Theme Picker'),
+        title: const Text('Theme Picker'),
         centerTitle: true,
       ),
       body: Padding(

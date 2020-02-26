@@ -1,4 +1,4 @@
-package com.example.dexter
+package com.jeremyimmanuel.dexter
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

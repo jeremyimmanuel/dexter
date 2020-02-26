@@ -241,27 +241,30 @@ class _NewCategoryState extends State<NewCategory> {
   bool _validate() {
     final name = _nameController.text.trim().toLowerCase();
 
+    const ok = 'OK';
+    
     // 1. Check for empty white spaces
     if (name.isEmpty) {
+      const emptyWarning = 'Category name cannot be empty!';
       showDialog(
         context: context,
         builder: (context) {
           if (Platform.isIOS) {
             return CupertinoAlertDialog(
-              title: Text('Oopss!'),
+              title: const Text(emptyWarning),
               actions: <Widget>[
                 CupertinoDialogAction(
-                    child: Text('Ok'),
+                    child: const Text(ok),
                     onPressed: () => Navigator.of(context).pop()),
               ],
             );
           } else {
             return AlertDialog(
-              title: Text('Oopss!'),
+              title: const Text(emptyWarning),
               actions: <Widget>[
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text('Ok'),
+                  child: const Text(ok),
                 )
               ],
             );
@@ -279,25 +282,26 @@ class _NewCategoryState extends State<NewCategory> {
     // 2. Check for duplicates db;
     // if (catBox.get(name) != null) {
     if (_checkDuplicate()) {
+      final duplicateWarning = 'Category "${_nameController.text.trim()}" already exists!';
       showDialog(
         context: context,
         builder: (context) {
           if (Platform.isIOS) {
             return CupertinoAlertDialog(
-              title: Text('Duplicate!'),
+              title: Text(duplicateWarning),
               actions: <Widget>[
                 CupertinoDialogAction(
-                    child: Text('Ok'),
+                    child: const Text(ok),
                     onPressed: () => Navigator.of(context).pop()),
               ],
             );
           } else {
             return AlertDialog(
-              title: Text('Duplicate!'),
+              title: Text(duplicateWarning),
               actions: <Widget>[
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text('Ok'),
+                  child: const Text(ok),
                 )
               ],
             );

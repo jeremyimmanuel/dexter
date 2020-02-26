@@ -8,7 +8,6 @@ import 'package:hive/hive.dart';
 import '../models/task.dart';
 import '../models/category.dart';
 
-// TODO: add get last selected category feature
 class NewTask extends StatefulWidget {
   NewTask({Key key}) : super(key: key);
 
@@ -36,26 +35,27 @@ class _NewTaskState extends State<NewTask> {
   /// 1. Cannot be empty
   bool _validate() {
     if (_eventController.text.trim().isEmpty) {
-      final text = 'Task must not be empty!';
+      const text = 'Task must not be empty!';
+      const ok = 'OK';
       showDialog(
         context: context,
         builder: (context) {
           if (Platform.isIOS) {
             return CupertinoAlertDialog(
-              title: Text(text),
+              title: const Text(text),
               actions: <Widget>[
                 CupertinoDialogAction(
-                    child: Text('Ok'),
+                    child: const Text(ok),
                     onPressed: () => Navigator.of(context).pop()),
               ],
             );
           } else {
             return AlertDialog(
-              title: Text(text),
+              title: const Text(text),
               actions: <Widget>[
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text('Ok'),
+                  child: const Text(ok),
                 )
               ],
             );
@@ -76,7 +76,6 @@ class _NewTaskState extends State<NewTask> {
       event: _eventController.text,
       taskCategory: _dropDownCat,
     );
-    // TODO: changed key to task.tid; TEST THIS
     Hive.box('tasks').put(task.tid, task);
     Navigator.of(context).pop();
   }

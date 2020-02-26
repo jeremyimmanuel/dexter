@@ -9,6 +9,7 @@ class AboutPage extends StatelessWidget {
 
   const AboutPage({Key key}) : super(key: key);
 
+  // No mail alert
   void _noMailAlert(BuildContext context) {
     const String text = 'No mail app found!';
     showDialog(
@@ -19,7 +20,7 @@ class AboutPage extends StatelessWidget {
             title: const Text(text),
             actions: <Widget>[
               CupertinoDialogAction(
-                  child: const Text('Ok'),
+                  child: const Text('OK'),
                   onPressed: () => Navigator.of(context).pop()),
             ],
           );
@@ -29,7 +30,7 @@ class AboutPage extends StatelessWidget {
             actions: <Widget>[
               FlatButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: const Text('Ok'),
+                child: const Text('OK'),
               )
             ],
           );
@@ -38,19 +39,15 @@ class AboutPage extends StatelessWidget {
     );
   }
 
+  // launch URL
   void _launchURL(BuildContext context, String text) async {
     String url;
     print(text);
     if (text == 'jeremy8@uw.edu') {
       final email = 'jeremy8@uw.edu';
+      final cc = 'jeremytandjung@icloud.com';
       final subject = '[Dexter%20App]';
-      url = 'mailto:$email?subject=$subject&body=Hello%20there,';
-      print('tapped uw : $url');
-    } else if (text == 'jeremytandjung@icloud.com') {
-      final email = 'jeremytandjung@icloud.com';
-      final subject = '[Dexter%20App]';
-      url = 'mailto:$email?subject=$subject&body=Hello%20there,';
-      print('tapped icloud : $url');
+      url = 'mailto:$email?subject=$subject&cc=$cc&body=Hello%20there,';
     } else if (text == 'Linkedin') {
       url = 'https://www.linkedin.com/in/jeremytandjung';
     } else if (text == 'Github') {
@@ -140,7 +137,6 @@ class AboutPage extends StatelessWidget {
             ),
             // _buildLink(context, 'Resume'),
             _buildLink(context, 'jeremy8@uw.edu'),
-            _buildLink(context, 'jeremytandjung@icloud.com'),
             _buildLink(context, 'Linkedin'),
             _buildLink(context, 'Github'),
           ],

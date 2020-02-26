@@ -18,6 +18,7 @@ class CategoryPage extends StatelessWidget {
       child: const Center(
         child: const Icon(
           Icons.add,
+          size: 30,
         ),
       ),
     );
