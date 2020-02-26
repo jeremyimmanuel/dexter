@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   /// of the screen
   void _showAddNewTask() {
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
       builder: (ctx) {
         return NewTask();
