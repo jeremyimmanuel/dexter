@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
@@ -39,18 +38,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // void _updateMyItems(int oldIdx, int newIdx) {
-  //   if (newIdx > oldIdx) newIdx -= 1;
-
-  //   final Task t = tl.removeAt(oldIdx);
-  //   tl.insert(newIdx, t);
-  // }
-
+  /// delete task
   void _deleteTask(int i) {
     final taskBox = Hive.box('tasks');
     taskBox.deleteAt(i);
   }
 
+  /// build list view
   Widget _buildListView(bool isRight) {
     final taskBox = Hive.box('tasks');
     // taskBox.watch(key: 'tasks');

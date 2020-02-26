@@ -24,14 +24,16 @@ class _ThemePickerState extends State<ThemePicker> {
   @override
   void initState() { 
     super.initState();
+    
+    // get current theme settings
     Timer(Duration.zero, () {
       setState(() {
         selected = Provider.of<DexterTheme>(context, listen: false).selected;    
       });
-    });
-    
+    });    
   }
 
+  /// build radio tiles
   List<Widget> _buildThemeRadioTiles(DexterTheme d) {
     final themeArr = ['Light', 'Dark',];
     final settingBox = Hive.box('settings');
