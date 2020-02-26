@@ -24,8 +24,6 @@ dependencies:
   hive: ^1.4.0+1
   hive_flutter: ^0.3.0+1
   path_provider: ^1.6.0
-  shared_preferences: ^0.5.6+1
-  flutter_spinkit: ^4.1.1+1
   flutter_colorpicker: ^0.3.2
   random_color: ^1.0.3
   url_launcher: ^5.4.2
@@ -42,6 +40,8 @@ dev_dependencies:
   hive_generator: ^0.7.0
   build_runner: ^1.7.4
 
+flutter_launcher_name:
+  name: "Dexter"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

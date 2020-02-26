@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:hive/hive.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:random_color/random_color.dart';
 
 import '../models/category.dart';
@@ -26,7 +25,6 @@ class NewCategory extends StatefulWidget {
 }
 
 class _NewCategoryState extends State<NewCategory> {
-  Future<SharedPreferences> fPref = SharedPreferences.getInstance();
 
   TextEditingController _nameController = TextEditingController();
   FocusNode _nameFocusNode = FocusNode();
@@ -58,11 +56,6 @@ class _NewCategoryState extends State<NewCategory> {
       _currentColor = RandomColor().randomColor();
     }
 
-    // fPref.then((pref) {
-    //   setState(() {
-    //     _isRight = pref.getBool('isRight') ?? true;
-    //   });
-    // });
   }
 
   @override
@@ -325,7 +318,6 @@ class _NewCategoryState extends State<NewCategory> {
       colorVal: _currentColor.value,
     );
 
-    // TODO: test updating category will update tasks
     // delete old category if in edit mode
     if (_isEditMode) {
       newC.cid = widget.cat.cid;

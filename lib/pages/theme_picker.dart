@@ -66,6 +66,7 @@ class _ThemePickerState extends State<ThemePicker> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Theme Picker'),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(

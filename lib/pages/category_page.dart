@@ -11,11 +11,12 @@ class CategoryPage extends StatelessWidget {
 
   const CategoryPage({Key key}) : super(key: key);
 
+  /// build add tile at the end of the GridView
   Widget _buildAddTile(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.of(context).pushNamed(NewCategory.routeName),
       child: const Center(
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
       ),
@@ -27,6 +28,7 @@ class CategoryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categories'),
+        centerTitle: true,
       ),
       body: ValueListenableBuilder(
         valueListenable: Hive.box(Category.boxName).listenable(),
@@ -45,7 +47,7 @@ class CategoryPage extends StatelessWidget {
                   );
                 },
               ).toList(),
-              _buildAddTile(context),
+               _buildAddTile(context),
             ],
           );
         },

@@ -92,6 +92,7 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('About'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(

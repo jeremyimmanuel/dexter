@@ -1,13 +1,12 @@
-import 'package:dexter/widgets/task_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../models/task.dart';
 import '../pages/new_task.dart';
 import '../pages/app_drawer.dart';
+import '../widgets/task_widget.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/home';
@@ -19,17 +18,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Future<SharedPreferences> fPref = SharedPreferences.getInstance();
+  final settings = Hive.box('settings');
   bool _isRight;
 
   @override
   void initState() {
     super.initState();
-    fPref.then((pref) {
-      setState(() {
-        _isRight = pref.getBool('isRight') ?? true;
-      });
-    });
+    _isRight = settings.get('isRight') ?? true;
   }
 
   /// Shows the new task pop up from the bottom
@@ -148,10 +143,8 @@ class _HomePageState extends State<HomePage> {
         onPressed: () async {
           setState(() {
             _isRight = !_isRight;
-            print('isRight : $_isRight');
           });
-          SharedPreferences pref = await SharedPreferences.getInstance();
-          await pref.setBool('isRight', _isRight);
+          settings.put('isRight', _isRight);
         },
       ),
     );
@@ -161,15 +154,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     if (_isRight == null)
       return const Center(
-        child: SpinKitRotatingCircle(
-          color: Colors.black,
-          size: 50.0,
-        ),
+        child: Text('Dexter'),
       );
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Tasks'),
+        centerTitle: true,
       ),
       // negation kinda tricky
       drawer: !_isRight ? AppDrawer() : null,
