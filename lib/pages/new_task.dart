@@ -94,7 +94,7 @@ class _NewTaskState extends State<NewTask> {
       controller: _eventController,
       autofocus: true,
       focusNode: _eventFocusNode,
-      cursorColor: Colors.black,
+      cursorColor: Theme.of(context).accentColor,
       textInputAction: TextInputAction.next,
       onSubmitted: (s) {
         _eventFocusNode.unfocus();

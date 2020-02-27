@@ -223,7 +223,7 @@ class _NewCategoryState extends State<NewCategory> {
   // Category is duplicate if have same cat name
   bool _checkDuplicate() {
     for (var cat in catBox.values) {
-      if (cat.name == _nameController.text.trim()) {
+      if (cat.name.toLowerCase() == _nameController.text.trim().toLowerCase()) {
         print('cat.name : ${cat.name}');
         print('_nameController.text.trim() : ${_nameController.text.trim()}');
         return true;

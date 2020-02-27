@@ -34,16 +34,19 @@ class CategoryWidget extends StatelessWidget {
 
   /// Show to alert dialog telling users a warning
   Future<bool> _showDeleteWarning(BuildContext context) async {
+    final deleteCategory = 'Delete Category "${cat.name}"';
+    const deleteCatContent =
+        'Deleting a category will also delete all tasks under that category.';
     return await showDialog(
       context: context,
       builder: (context) {
         if (Platform.isIOS) {
           return CupertinoAlertDialog(
             title: Text(
-              'Delete ${cat.name}?',
+              deleteCategory,
             ),
             content: Text(
-              'Deleting a category will also delete all tasks under that category.',
+              deleteCatContent,
             ),
             actions: <Widget>[
               CupertinoDialogAction(
@@ -64,21 +67,27 @@ class CategoryWidget extends StatelessWidget {
         } else {
           return AlertDialog(
             title: Text(
-              'Delete ${cat.name}?',
+              deleteCategory,
               style: Theme.of(context).textTheme.body1,
             ),
             content: Text(
-              'Deleting a category will also delete all tasks under that category.',
+              deleteCatContent,
               style: Theme.of(context).textTheme.subtitle,
             ),
             actions: <Widget>[
               FlatButton(
                 onPressed: () => Navigator.of(context).pop(false),
-                child: Text('Cancel'),
+                child: const Text('Cancel'),
               ),
               FlatButton(
                 onPressed: () => Navigator.of(context).pop(true),
-                child: Text('Delete'),
+                child: Text(
+                  'Delete',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle
+                      .copyWith(color: Colors.redAccent),
+                ),
               )
             ],
           );
@@ -108,6 +117,8 @@ class CategoryWidget extends StatelessWidget {
     catBox.delete(cat.cid);
   }
 
+  // builds cupertino context menu preview
+  // The view when user long press category widget
   Widget _previewBuilder(
       BuildContext context, Animation<double> animation, Widget w) {
     return ClipRRect(
@@ -176,7 +187,7 @@ class CategoryWidget extends StatelessWidget {
       fontFamily: CupertinoIcons.iconFont,
       fontPackage: CupertinoIcons.iconFontPackage,
     );
-    var menuActions = <Widget>[
+    final menuActions = <Widget>[
       // Edit
       CupertinoContextMenuAction(
         child: Text(

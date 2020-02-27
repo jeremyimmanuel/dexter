@@ -4,6 +4,10 @@ import '../pages/theme_picker.dart';
 import '../pages/category_page.dart';
 import '../pages/about.dart';
 
+/// App Drawer for Dexter
+/// 
+/// Adaptively builds left or right version
+/// of app drawer
 class AppDrawer extends StatelessWidget {
   // Left version of app drawer (Default)
   const AppDrawer({
@@ -31,6 +35,8 @@ class AppDrawer extends StatelessWidget {
         title: Text(
           'Home',
           textAlign: isRight ? TextAlign.start : TextAlign.end,
+          style:
+              Theme.of(context).textTheme.subtitle.copyWith(fontFamily: 'Muli'),
         ),
         trailing: !isRight ? homeIcon : null,
         onTap: () => Navigator.of(context).pop(),
@@ -41,6 +47,8 @@ class AppDrawer extends StatelessWidget {
         title: Text(
           'Theme',
           textAlign: isRight ? TextAlign.start : TextAlign.end,
+          style:
+              Theme.of(context).textTheme.subtitle.copyWith(fontFamily: 'Muli'),
         ),
         trailing: !isRight ? settingsIcon : null,
         onTap: () {
@@ -54,6 +62,8 @@ class AppDrawer extends StatelessWidget {
         title: Text(
           'Categories',
           textAlign: isRight ? TextAlign.start : TextAlign.end,
+          style:
+              Theme.of(context).textTheme.subtitle.copyWith(fontFamily: 'Muli'),
         ),
         trailing: !isRight ? addIcon : null,
         onTap: () {
@@ -104,9 +114,14 @@ class AppDrawer extends StatelessWidget {
                   title: Text(
                     'About',
                     textAlign: isRight ? TextAlign.start : TextAlign.end,
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle
+                        .copyWith(fontFamily: 'Muli', fontWeight: FontWeight.w400),
                   ),
                   trailing: !isRight ? Icon(Icons.info) : null,
-                  onTap: () => Navigator.of(context).pushNamed(AboutPage.routeName),
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(AboutPage.routeName),
                 ),
               ),
             ),
