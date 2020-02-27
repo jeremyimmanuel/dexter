@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Theme List for this app
-/// 
+///
 /// 0. Light theme
 /// 1. Dark theme
 class DexterTheme with ChangeNotifier {
@@ -9,15 +9,14 @@ class DexterTheme with ChangeNotifier {
 
   DexterTheme({this.selected = 0});
 
-  set selectTheme(int newVal){
-    if(newVal < 0 || newVal > 1)
-      selected = 0;
+  set selectTheme(int newVal) {
+    if (newVal < 0 || newVal > 1) selected = 0;
     selected = newVal;
     notifyListeners();
   }
 
   ThemeData get theme {
-    switch (selected) { 
+    switch (selected) {
       case 0:
         return light;
       case 1:
@@ -30,12 +29,13 @@ class DexterTheme with ChangeNotifier {
   ThemeData get light {
     final ThemeData base = ThemeData.light();
     Color mainColor = Colors.white;
+    Color accentColor = Colors.black;
 
     Color dexterColor = Color(0xFF00eaff);
     return base.copyWith(
       // accentColor: Colors.cyan[300],
-      
-      accentColor: Colors.black,
+
+      accentColor: accentColor,
       primaryColor: mainColor,
       appBarTheme: base.appBarTheme.copyWith(
         color: mainColor,
@@ -43,12 +43,14 @@ class DexterTheme with ChangeNotifier {
           title: TextStyle(
             fontFamily: 'Muli',
             fontWeight: FontWeight.w300,
-            color: Colors.black,
+            color: accentColor,
             fontSize: 30,
           ),
         ),
         elevation: 1,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(
+          color: accentColor,
+        ),
       ),
       floatingActionButtonTheme: base.floatingActionButtonTheme.copyWith(
         backgroundColor: mainColor,
@@ -56,34 +58,33 @@ class DexterTheme with ChangeNotifier {
       ),
 
       textTheme: base.textTheme.copyWith(
-        body1: TextStyle(
-          fontFamily: 'Abel',
-          fontSize: 20,
-          color: Colors.black,
-        ),
-        subtitle: TextStyle(
-          fontFamily: 'Encode Sans',
-          fontSize: 15,
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-        ),
-        title: TextStyle(
-          fontFamily: 'Encode Sans',
-          fontSize: 50,
-          color: Colors.black,
-          fontWeight: FontWeight.w900,
-        )
-        
-      ),
+          body1: TextStyle(
+            fontFamily: 'Abel',
+            fontSize: 20,
+            color: accentColor,
+          ),
+          subtitle: TextStyle(
+            fontFamily: 'Encode Sans',
+            fontSize: 15,
+            color: accentColor,
+            fontWeight: FontWeight.bold,
+          ),
+          title: TextStyle(
+            fontFamily: 'Encode Sans',
+            fontSize: 50,
+            color: accentColor,
+            fontWeight: FontWeight.w900,
+          )),
     );
   }
 
   ThemeData get dark {
     final ThemeData base = ThemeData.dark();
     Color mainColor = base.primaryColor;
+    Color accentColor = Colors.white;
     return base.copyWith(
       // accentColor: Colors.cyan[300],
-      accentColor: Colors.white,
+      accentColor: accentColor,
       primaryColor: mainColor,
       appBarTheme: base.appBarTheme.copyWith(
         color: mainColor,
@@ -91,13 +92,13 @@ class DexterTheme with ChangeNotifier {
           title: TextStyle(
             fontFamily: 'Muli',
             fontWeight: FontWeight.w300,
-            color: Colors.white,
+            color: accentColor,
             fontSize: 30,
           ),
         ),
         elevation: 1,
         iconTheme: IconThemeData(
-          color: Colors.white,
+          color: accentColor,
         ),
       ),
 
@@ -106,26 +107,23 @@ class DexterTheme with ChangeNotifier {
       ),
 
       textTheme: base.textTheme.copyWith(
-        body1: TextStyle(
-          fontFamily: 'Abel',
-          fontSize: 20,
-          color: Colors.white,
-        ),
-        subtitle: TextStyle(
-          fontFamily: 'San Serif',
-          fontSize: 15,
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
-
-        title: TextStyle(
-          fontFamily: 'Encode Sans',
-          fontSize: 50,
-          color: Colors.white,
-          fontWeight: FontWeight.w900,
-        )
-      ),
+          body1: TextStyle(
+            fontFamily: 'Abel',
+            fontSize: 20,
+            color: accentColor,
+          ),
+          subtitle: TextStyle(
+            fontFamily: 'San Serif',
+            fontSize: 15,
+            color: accentColor,
+            fontWeight: FontWeight.bold,
+          ),
+          title: TextStyle(
+            fontFamily: 'Encode Sans',
+            fontSize: 50,
+            color: accentColor,
+            fontWeight: FontWeight.w900,
+          )),
     );
   }
 }
-
