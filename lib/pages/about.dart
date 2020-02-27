@@ -17,7 +17,7 @@ class AboutPage extends StatelessWidget {
       builder: (context) {
         if (Platform.isIOS) {
           return CupertinoAlertDialog(
-            title: const Text(text),
+            title: Text(text),
             actions: <Widget>[
               CupertinoDialogAction(
                   child: const Text('OK'),
@@ -26,7 +26,10 @@ class AboutPage extends StatelessWidget {
           );
         } else {
           return AlertDialog(
-            title: const Text(text),
+            title: Text(
+              text,
+              style: Theme.of(context).textTheme.body1,
+            ),
             actions: <Widget>[
               FlatButton(
                 onPressed: () => Navigator.of(context).pop(),

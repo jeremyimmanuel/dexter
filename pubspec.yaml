@@ -39,6 +39,14 @@ dev_dependencies:
     sdk: flutter
   hive_generator: ^0.7.0
   build_runner: ^1.7.4
+  flutter_launcher_icons: ^0.7.4
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "dev/dexter.png"
+  adaptive_icon_background: "#00FFEF"
+  adaptive_icon_foreground: "dev/dexter.png"
 
 flutter_launcher_name:
   name: "Dexter"

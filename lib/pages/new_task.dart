@@ -51,7 +51,10 @@ class _NewTaskState extends State<NewTask> {
             );
           } else {
             return AlertDialog(
-              title: const Text(text),
+              title: Text(
+                text,
+                style: Theme.of(context).textTheme.body1,
+              ),
               actions: <Widget>[
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(),
@@ -109,6 +112,7 @@ class _NewTaskState extends State<NewTask> {
   /// Build drop down category selector
   DropdownButton _buildDropDown() {
     final catBox = Hive.box(Category.boxName);
+    _dropDownCat ??= catBox.get('Home');
     return DropdownButton(
         focusNode: _categoryFocusNode,
         value: _dropDownCat,
@@ -140,9 +144,12 @@ class _NewTaskState extends State<NewTask> {
           setState(() {
             _dropDownCat = v;
             print('${v.name} : ${v.cid}');
-            if(v.name == 'Home' || v.name == 'Family' || v.name == 'Work' || v.name == 'Other')
-              Hive.box('settings').put('lastDropDown', (v as Category).name);  
-            else 
+            if (v.name == 'Home' ||
+                v.name == 'Family' ||
+                v.name == 'Work' ||
+                v.name == 'Other')
+              Hive.box('settings').put('lastDropDown', (v as Category).name);
+            else
               Hive.box('settings').put('lastDropDown', (v as Category).cid);
           });
         });

@@ -65,9 +65,11 @@ class CategoryWidget extends StatelessWidget {
           return AlertDialog(
             title: Text(
               'Delete ${cat.name}?',
+              style: Theme.of(context).textTheme.body1,
             ),
             content: Text(
               'Deleting a category will also delete all tasks under that category.',
+              style: Theme.of(context).textTheme.subtitle,
             ),
             actions: <Widget>[
               FlatButton(

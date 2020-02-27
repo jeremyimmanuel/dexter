@@ -25,7 +25,6 @@ class NewCategory extends StatefulWidget {
 }
 
 class _NewCategoryState extends State<NewCategory> {
-
   TextEditingController _nameController = TextEditingController();
   FocusNode _nameFocusNode = FocusNode();
 
@@ -55,7 +54,6 @@ class _NewCategoryState extends State<NewCategory> {
     } else {
       _currentColor = RandomColor().randomColor();
     }
-
   }
 
   @override
@@ -242,7 +240,7 @@ class _NewCategoryState extends State<NewCategory> {
     final name = _nameController.text.trim().toLowerCase();
 
     const ok = 'OK';
-    
+
     // 1. Check for empty white spaces
     if (name.isEmpty) {
       const emptyWarning = 'Category name cannot be empty!';
@@ -260,7 +258,10 @@ class _NewCategoryState extends State<NewCategory> {
             );
           } else {
             return AlertDialog(
-              title: const Text(emptyWarning),
+              title: Text(
+                emptyWarning,
+                style: Theme.of(context).textTheme.body1,
+              ),
               actions: <Widget>[
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(),
@@ -282,7 +283,8 @@ class _NewCategoryState extends State<NewCategory> {
     // 2. Check for duplicates db;
     // if (catBox.get(name) != null) {
     if (_checkDuplicate()) {
-      final duplicateWarning = 'Category "${_nameController.text.trim()}" already exists!';
+      final duplicateWarning =
+          'Category "${_nameController.text.trim()}" already exists!';
       showDialog(
         context: context,
         builder: (context) {
@@ -297,7 +299,10 @@ class _NewCategoryState extends State<NewCategory> {
             );
           } else {
             return AlertDialog(
-              title: Text(duplicateWarning),
+              title: Text(
+                duplicateWarning,
+                style: Theme.of(context).textTheme.body1,
+              ),
               actions: <Widget>[
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(),
