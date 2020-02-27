@@ -113,7 +113,7 @@ class DexterTheme with ChangeNotifier {
             color: accentColor,
           ),
           subtitle: TextStyle(
-            fontFamily: 'San Serif',
+            fontFamily: 'Encode Sans',
             fontSize: 15,
             color: accentColor,
             fontWeight: FontWeight.bold,
