@@ -158,7 +158,13 @@ class CategoryWidget extends StatelessWidget {
                 children: <Widget>[
                   ListTile(
                     leading: Icon(Icons.edit),
-                    title: Text('Edit'),
+                    title: Text(
+                      'Edit',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle
+                          .copyWith(fontWeight: FontWeight.w400),
+                    ),
                     onTap: () {
                       Navigator.of(context).pop();
                       Navigator.of(context).pushNamed(NewCategory.routeName,
@@ -167,7 +173,13 @@ class CategoryWidget extends StatelessWidget {
                   ),
                   ListTile(
                     leading: Icon(Icons.delete),
-                    title: Text('Delete'),
+                    title: Text(
+                      'Delete',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle
+                          .copyWith(fontWeight: FontWeight.w400),
+                    ),
                     onTap: () async {
                       Navigator.of(context).pop();
                       await _deleteCategory(context);

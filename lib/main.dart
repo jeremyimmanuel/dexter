@@ -56,7 +56,6 @@ void main() async {
   final catBox = Hive.box(Category.boxName);
   final defaultCategories = _makeDefaultCategories();
   for (Category cat in defaultCategories) {
-    print(cat.name);
     catBox.put(cat.name, cat);
   }
   runApp(Dexter());

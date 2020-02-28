@@ -143,7 +143,6 @@ class _NewTaskState extends State<NewTask> {
         onChanged: (v) {
           setState(() {
             _dropDownCat = v;
-            print('${v.name} : ${v.cid}');
             if (v.name == 'Home' ||
                 v.name == 'Family' ||
                 v.name == 'Work' ||

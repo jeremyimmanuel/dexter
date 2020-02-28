@@ -224,8 +224,6 @@ class _NewCategoryState extends State<NewCategory> {
   bool _checkDuplicate() {
     for (var cat in catBox.values) {
       if (cat.name.toLowerCase() == _nameController.text.trim().toLowerCase()) {
-        print('cat.name : ${cat.name}');
-        print('_nameController.text.trim() : ${_nameController.text.trim()}');
         return true;
       }
     }
@@ -306,7 +304,9 @@ class _NewCategoryState extends State<NewCategory> {
               actions: <Widget>[
                 FlatButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text(ok),
+                  child: Text(
+                    ok,
+                  ),
                 )
               ],
             );

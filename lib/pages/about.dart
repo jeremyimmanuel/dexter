@@ -45,7 +45,6 @@ class AboutPage extends StatelessWidget {
   // launch URL
   void _launchURL(BuildContext context, String text) async {
     String url;
-    print(text);
     if (text == 'jeremy8@uw.edu') {
       final email = 'jeremy8@uw.edu';
       final cc = 'jeremytandjung@icloud.com';
@@ -60,7 +59,6 @@ class AboutPage extends StatelessWidget {
     } else {
       url = 'https://apple.com';
     }
-    print('launch URL Tapped');
 
     if (await canLaunch(url)) {
       await launch(url);
