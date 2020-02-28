@@ -44,9 +44,9 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "dev/dexter4.png"
-  adaptive_icon_background: "#00C4FF"
-  adaptive_icon_foreground: "dev/dexter4.png"
+  image_path: "dev/dexter_gradient2.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "dev/dexter_invert.png"
 
 flutter_launcher_name:
   name: "Dexter"
