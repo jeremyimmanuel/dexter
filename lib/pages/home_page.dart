@@ -74,13 +74,11 @@ class _HomePageState extends State<HomePage> {
               ),
               key: Key(box.keyAt(index).toString()),
               onDismissed: (_) => _deleteTask(index),
-              direction: isRight
-                  ? DismissDirection.startToEnd
-                  : DismissDirection.endToStart,
+              direction: DismissDirection.startToEnd,
               background: Container(
                 color: Colors.red[600],
                 alignment: Alignment(
-                  isRight ? -0.8 : 0.8,
+                  -0.8,
                   0,
                 ),
                 child: const Icon(
