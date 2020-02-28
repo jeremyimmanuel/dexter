@@ -5,7 +5,7 @@ import '../pages/category_page.dart';
 import '../pages/about.dart';
 
 /// App Drawer for Dexter
-/// 
+///
 /// Adaptively builds left or right version
 /// of app drawer
 class AppDrawer extends StatelessWidget {
@@ -114,10 +114,10 @@ class AppDrawer extends StatelessWidget {
                   title: Text(
                     'About',
                     textAlign: isRight ? TextAlign.start : TextAlign.end,
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle
-                        .copyWith(fontFamily: 'Muli', fontWeight: FontWeight.w400),
+                    style: Theme.of(context).textTheme.subtitle.copyWith(
+                          fontFamily: 'Muli',
+                          fontWeight: FontWeight.w400,
+                        ),
                   ),
                   trailing: !isRight ? Icon(Icons.info) : null,
                   onTap: () =>
