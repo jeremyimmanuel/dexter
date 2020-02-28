@@ -94,22 +94,8 @@ flutter:
           weight: 400
     - family: Encode Sans
       fonts:
-        - asset: assets/fonts/EncodeSans/normal/EncodeSansNormal-100-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/EncodeSans/normal/EncodeSansNormal-200-ExtraLight.ttf
-          weight: 200
-        - asset: assets/fonts/EncodeSans/normal/EncodeSansNormal-300-Light.ttf
-          weight: 300
-        - asset: assets/fonts/EncodeSans/normal/EncodeSansNormal-400-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/EncodeSans/normal/EncodeSansNormal-500-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/EncodeSans/normal/EncodeSansNormal-600-SemiBold.ttf
-          weight: 600
         - asset: assets/fonts/EncodeSans/normal/EncodeSansNormal-700-Bold.ttf
           weight: 700
-        - asset: assets/fonts/EncodeSans/normal/EncodeSansNormal-800-ExtraBold.ttf
-          weight: 800
         - asset: assets/fonts/EncodeSans/normal/EncodeSansNormal-900-Black.ttf
           weight: 900
   #
