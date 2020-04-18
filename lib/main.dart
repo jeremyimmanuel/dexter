@@ -87,7 +87,7 @@ class _DexterState extends State<Dexter> {
       child: Consumer<DexterTheme>(
         builder: (context, dt, _) {
           return MaterialApp(
-            title: 'Flutter Demo',
+            title: 'Dexter',
             debugShowCheckedModeBanner: false,
             theme: dt.theme,
             onGenerateRoute: RouteGenerator.generateRoute,

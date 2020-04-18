@@ -23,6 +23,9 @@ class _NewTaskState extends State<NewTask> {
   FocusNode _eventFocusNode = FocusNode();
   FocusNode _categoryFocusNode = FocusNode();
 
+  bool remindMe = false;
+  DateTime remindDate;
+
   @override
   void dispose() {
     _eventController.dispose();
@@ -181,6 +184,43 @@ class _NewTaskState extends State<NewTask> {
     );
   }
 
+  void _showDatePicker() {}
+
+  Widget _buildRemindMe() {
+    return Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Checkbox(
+                value: remindMe,
+                onChanged: (v) {
+                  setState(() {
+                    remindMe = v;
+                  });
+                }),
+          ],
+        ),
+        if (remindMe) Container(
+          height: 200,
+          child: CupertinoDatePicker(
+            onDateTimeChanged: (newDate) {
+              setState(() {
+                remindDate = newDate;
+              });
+            },
+            initialDateTime: DateTime.now().add(Duration(hours: 1)),
+            minimumDate: DateTime.now(),
+            mode: CupertinoDatePickerMode.dateAndTime, 
+            minimumYear: 2019,
+            // backgroundColor: Colors.white,
+
+
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -209,6 +249,8 @@ class _NewTaskState extends State<NewTask> {
                 _buildAddButton(),
               ],
             ),
+            const SizedBox(height: 10),
+            _buildRemindMe(),
           ],
         ),
       ),

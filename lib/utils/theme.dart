@@ -37,6 +37,7 @@ class DexterTheme with ChangeNotifier {
 
       accentColor: accentColor,
       primaryColor: mainColor,
+      backgroundColor: base.backgroundColor,
       appBarTheme: base.appBarTheme.copyWith(
         color: mainColor,
         textTheme: TextTheme(
@@ -86,6 +87,7 @@ class DexterTheme with ChangeNotifier {
       // accentColor: Colors.cyan[300],
       accentColor: accentColor,
       primaryColor: mainColor,
+      backgroundColor: base.backgroundColor,
       appBarTheme: base.appBarTheme.copyWith(
         color: mainColor,
         textTheme: TextTheme(

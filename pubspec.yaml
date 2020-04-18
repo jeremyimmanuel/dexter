@@ -27,6 +27,7 @@ dependencies:
   flutter_colorpicker: ^0.3.2
   random_color: ^1.0.3
   url_launcher: ^5.4.2
+  flutter_local_notifications: ^1.2.0+4
   
 
 
